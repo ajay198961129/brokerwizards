@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head.ejs") %>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Broker Wizards Trading Platform</title>
+  </head>
+  <body>
+    <section class="trader-wraper">
+      <div class="graph-wraper">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="trader-bottom">
+        <a href="deposit">
+          <div class="sell-btn">Sell</div>
+        </a>
+        <a href="deposit">
+          <div class="buy-btn">Buy</div>
+        </a>
+        <!-- <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default btn-subtract" type="button">
+              -
+            </button>
+          </span>
+          <input
+            type="text"
+            class="form-control no-padding text-center item-quantity"
+            value="1"
+          />
+          <span class="input-group-btn">
+            <button class="btn btn-default btn-add" type="button">+</button>
+          </span>
+        </div> -->
+        <div class="qty-wraper">
+          <div id="minus" class="minus-btn btn-subtract">-</div>
+          <input type="text" class="qty item-quantity" value="1" readonly />
+          <div id="plus" class="plus-btn btn-add">+</div>
+        </div>
+        <div class="details">
+          <div class="item">Amount:</div>
+          <div class="value">$<span class="amount">500</span></div>
+        </div>
+        <a href="deposit"><div class="deposit-btn">Deposit</div></a>
+
+        <div class="details">
+          <div class="item">Buy Price:</div>
+          <div class="value">$500</div>
+          <div class="item">Interest:</div>
+          <div class="value">5%/Day</div>
+        </div>
+      </div>
+    </section>
+    <%- include("includes/chart.ejs") %>
+    <script>
+      var minus = document.querySelector(".btn-subtract");
+      var add = document.querySelector(".btn-add");
+      var quantityNumber = document.querySelector(".item-quantity");
+      let amount = document.querySelector(".amount");
+      var currentValue = 1;
+
+      minus.addEventListener("click", function () {
+        if (currentValue != 1) {
+          currentValue -= 1;
+        }
+        quantityNumber.value = currentValue;
+        let finalAmount = 500 * currentValue;
+        amount.innerHTML = finalAmount;
+      });
+
+      add.addEventListener("click", function () {
+        currentValue += 1;
+        quantityNumber.value = currentValue;
+        let finalAmount = 500 * currentValue;
+        amount.innerHTML = finalAmount;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-subtract" type="button">-</button>
+      </span>
+      <input
+        type="text"
+        class="form-control no-padding text-center item-quantity"
+        value="1"
+      />
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-add" type="button">+</button>
+      </span>
+    </div>
+    <script>
+      var minus = document.querySelector(".btn-subtract");
+      var add = document.querySelector(".btn-add");
+      var quantityNumber = document.querySelector(".item-quantity");
+      var currentValue = 1;
+
+      minus.addEventListener("click", function () {
+        if (currentValue != 1) {
+          currentValue -= 1;
+        }
+        quantityNumber.value = currentValue;
+        console.log(currentValue);
+      });
+
+      add.addEventListener("click", function () {
+        currentValue += 1;
+        quantityNumber.value = currentValue;
+        console.log(currentValue);
+      });
+    </script>
+  </body>
+</html>
